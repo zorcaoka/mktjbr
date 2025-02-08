@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AdminPage from './pages/AdminPage';
 import CustomPagesAdmin from './pages/CustomPagesAdmin';
 import CustomPage from './pages/CustomPage';
@@ -8,7 +8,7 @@ import UserPage from './pages/UserPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<UserPage />} />
         <Route path="/admin" element={<AdminPage />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
