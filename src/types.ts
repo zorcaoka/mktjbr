@@ -2,25 +2,30 @@ export interface CardData {
   id: number;
   title: string;
   url: string;
+  order: number;
+  enabled: boolean;
+  disableReason?: string;
 }
 
-export interface CustomPage {
+export interface Announcement {
   id: number;
-  title: string;
-  htmlContent: string;
-  slug: string;
+  content: string;
+  active: boolean;
 }
 
 export interface AdminState {
   cards: CardData[];
-  customPages: CustomPage[];
+  announcement: Announcement | null;
   updateCard: (id: number, title: string, url: string) => void;
   addCard: (title: string, url: string) => void;
   deleteCard: (id: number) => void;
-  addCustomPage: (title: string, htmlContent: string) => void;
-  updateCustomPage: (id: number, title: string, htmlContent: string) => void;
-  deleteCustomPage: (id: number) => void;
+  reorderCards: (fromIndex: number, toIndex: number) => void;
+  toggleCardStatus: (id: number, enabled: boolean, reason?: string) => void;
+  updateAnnouncement: (content: string) => void;
+  toggleAnnouncement: (active: boolean) => void;
   isAuthenticated: boolean;
+  hasUnsavedChanges: boolean;
+  saveChanges: () => void;
   login: (username: string, password: string) => boolean;
   logout: () => void;
 }
