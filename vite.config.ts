@@ -1,32 +1,12 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react'; // Plugin for React
+import react from '@vitejs/plugin-react';
 
-// Export the configuration
-export default defineConfig({
-  // Base URL for the project (adjust for GitHub Pages)
-  base: '/mktjemberhelpdesk/', // Replace with your repository name
-
-  // Plugins
+// https://vitejs.dev/config/
+export default 
+  defineConfig({
   plugins: [react()],
-
-  // Optional: Add build configurations if needed
-  build: {
-    outDir: 'dist', // Output directory for built files (default is 'dist')
-    assetsDir: 'assets', // Directory for static assets (default is 'assets')
-    emptyOutDir: true, // Clear the output directory before building
-    rollupOptions: {
-      // Ensure all assets are correctly bundled
-      output: {
-        entryFileNames: `assets/[name].js`,
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`,
-      },
-    },
+  optimizeDeps: {
+    exclude: ['lucide-react'],
   },
-
-  // Optional: Server configuration for local development
-  server: {
-    port: 3000, // Set the development server port
-    open: true, // Automatically open the browser during development
-  },
+  base: './', // Add this line to make assets load correctly
 });
